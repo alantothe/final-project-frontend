@@ -5,15 +5,22 @@ import { Typography } from "@mui/material";
 
 import LoginPageInputs from "./LoginPageInput";
 import LoginButton from "./LoginButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { validateLoginForm } from "../shared/utilities/validators";
 
 const LoginPage = () => {
 
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isFormValid, setIsFormValid] = useState(false)
+  const [isFormValid, setIsFormValid] = useState(false) // will enable the login button once email and password are valid.
+
+  useEffect (() => {
+    setIsFormValid (validateLoginForm({ email, password }));
+    }, [email, password, setIsFormValid]);
+
   const handleLogin = () => {
+    console.log("Login Successful ")
 
   }
 

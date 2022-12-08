@@ -22,7 +22,7 @@ const CustomButton = ({
         height: "40px",
       }}
       style={additionalStyles ? additionalStyles : {}}
-      disabled={disabled}
+      disabled={!disabled}
       onClick={onClick}
     >
       {label}
