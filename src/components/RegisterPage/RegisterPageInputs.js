@@ -1,7 +1,8 @@
 import React from 'react';
 import InputBox from '../shared/InputBox';
 
-const RegisterPageInputs = (email, setEmail, username, setUsername, password, setPassword ) => {
+const RegisterPageInputs = (props ) => {
+    const {email, setEmail, username, setUsername, password, setPassword} = props
 
     return (
         <div>
@@ -20,8 +21,7 @@ const RegisterPageInputs = (email, setEmail, username, setUsername, password, se
         label= "Password"
         type="password"
         placeholder="Enter Password" />
-
-</div>
+        </div>
     );
 };
 
