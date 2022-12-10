@@ -5,9 +5,9 @@ export const validateLoginForm = ({ email, password }) => {
 
     return isEmailValid && isPasswordValid
     };
+//-----------------------------------------------------------------
 
-
-    export const validateRegisterForm = ({ email, password, username }) => {
+ export const validateRegisterForm = ({ email, password, username }) => {
         return (
           validateEmail(email) &&
           validatePassword(password) &&
@@ -16,7 +16,7 @@ export const validateLoginForm = ({ email, password }) => {
       };
 
 
-    //------------------------------------------------------------
+//-----------------------------------------------------------------
     const validatePassword = (password) => {
         return password.length > 6 && password.length < 12;
         };

@@ -1,4 +1,4 @@
-// import { authActions } from "../actions/authActions";
+import { authActions } from "../actions/authActions";
 
 const initState = {
   userDetails: null,
@@ -8,7 +8,7 @@ const initState = {
 
 const reducer = (state = initState, action) => {
   switch (action.type) {
-    case "":
+    case authActions.SET_USER_DETAILS:
       return {
         ...state,
         userDetails: action.userDetails,

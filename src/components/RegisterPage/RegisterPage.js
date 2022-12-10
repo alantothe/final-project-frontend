@@ -9,8 +9,15 @@ import RegisterPageInputs from "./RegisterPageInputs";
 import RegisterButton from "./RegisterPageButton";
 import { validateRegisterForm } from "../shared/utilities/validators";
 
+import { connect } from "react-redux";
+import { getActions } from "../../store/actions/authActions";
+import { useNavigate } from "react-router-dom";
 
-const RegisterPage = () => {
+
+const RegisterPage = ({register} ) => {
+
+  const navigate = useNavigate()
+
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -26,8 +33,15 @@ const RegisterPage = () => {
     );
   }, [email, username, password, setIsFormValid]);
 
-
+  // register function sends userDetails to server
   const handleRegister = () => {
+    const userDetails = {
+      email,
+      password,
+      username,
+    }
+    register(userDetails, navigate)
+    console.log(userDetails)
     console.log("Register Successful ")
 
   }
@@ -58,4 +72,10 @@ const RegisterPage = () => {
 };
 
 
-export default RegisterPage;
+const mapActionsToProps = (dispatch) => {
+  return {
+    ...getActions(dispatch)
+  }
+};
+
+export default connect(null, mapActionsToProps)(RegisterPage);

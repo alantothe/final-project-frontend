@@ -3,7 +3,7 @@ import React from "react";
 import { styled } from '@mui/system';
 
 
-// mui basic style component syntax
+// mui custom component syntax
 // styled(Component)({
 //    styles/css
 //})

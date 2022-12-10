@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk';
 
 import authReducer from "./reducers/authReducers";
 
 import { combineReducers} from "redux";
+
 
 
 
@@ -12,7 +14,8 @@ const rootReducer = combineReducers({
 });
 
 const store = configureStore({
-    reducer : {rootReducer}
+    reducer : {rootReducer},
+    middleware: [thunk]
 })
 
 
@@ -20,6 +23,25 @@ const store = configureStore({
 
 
 export default store;
+
+
+
+
+
+// import { configureStore, applyMiddleware } from '@reduxjs/toolkit';
+// import thunk from 'redux-thunk';
+// import rootReducer from './reducers';
+
+// const store = configureStore({
+//   reducer: rootReducer,
+//   middleware: [applyMiddleware(thunk)]
+// });
+
+
+
+
+
+
 
 //
 
@@ -42,5 +64,7 @@ export default store;
 // );
 
 // export default store;
+
+
 
 

@@ -2,6 +2,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom'
 
+
 import './App.css';
 
 import Dashboard from './components/Dashboard/Dashboard';
@@ -26,6 +27,7 @@ function App() {
           </Route>
           <Route path="/" element={<Navigate to="dashboard" />} />
         </Routes>
+
       </Router>
   );
 }
