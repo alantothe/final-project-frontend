@@ -1,40 +1,27 @@
-// import React from "react";
-// import { useState} from "react";
+import React from 'react';
+import { styled } from "@mui/system"
+import SideBar  from './SideBar/SideBar'
+import  AppBar  from './AppBar/AppBar';
+import FriendsSideBar from './FriendsSideBar/FriendsSideBar'
+import Messenger from './Messenger/Messenger'
 
-//testing
+const Wrapper = styled("div")({
+    width: "100%",
+    height: "100vh",
+    display: "flex",
+  });
 
-// const EmptyComponent1 = () => {
-//   return <div>
-//     <h1>YO</h1>
-//   </div>
-//   ;
-// };
-
-// const EmptyComponent2 = () => {
-//   return <div>
-//   <h1>YO2</h1>
-// </div>
-// };
-
-// const Dashboard = () => {
-//   const [showComponent1, setShowComponent1] = useState(true);
-//   const [showComponent2, setShowComponent2] = useState(false);
-
-//   const handleButtonClick = () => {
-//     setShowComponent1(!showComponent1);
-//     setShowComponent2(!showComponent2);
-//   };
-
-//   return (
-//     <div>
-//       <button onClick={handleButtonClick}>
-//         Group
-//       </button>
-//       {showComponent1 && <EmptyComponent1 />}
-//       {showComponent2 && <EmptyComponent2 />}
-//     </div>
-//   );
-// };
+  const Dashboard = ({ setUserDetails }) => {
 
 
-// export default Dashboard ;
+    return (
+      <Wrapper>
+        <SideBar />
+        <FriendsSideBar />
+        <Messenger />
+        <AppBar />
+      </Wrapper>
+    );
+  };
+
+  export default Dashboard
