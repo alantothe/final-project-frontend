@@ -8,12 +8,14 @@ import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
+import AlertNotification from './components/shared/AlertNotifications';
 
 
 function App() {
   console.log("yo app")
 
   return (
+    <>
 <Router>
         <Routes>
           <Route exact path="/login" element={<LoginPage />}>
@@ -29,6 +31,8 @@ function App() {
         </Routes>
 
       </Router>
+      <AlertNotification/>
+      </>
   );
 }
 

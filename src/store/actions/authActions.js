@@ -1,4 +1,5 @@
 import * as api from '../../api'
+// import { openAlertMessage } from './alertActions';
 
 
 export const authActions ={
@@ -33,7 +34,11 @@ const login = (userDetails, navigate) => {
     const response = await api.login(userDetails);
     console.log(response);
         if(response.error){
-            console.log("caught here")
+            alert(response?.exception?.response?.data);
+            //open alert not working sending out js alertbox
+            // dispatch(openAlertMessage(response?.exception?.response?.data))
+
+
 
 
         }
@@ -46,11 +51,15 @@ const login = (userDetails, navigate) => {
             }
         }
     };
-    const register = (userDetails, navigate) => {
-        return async (dispatch) => {
+
+
+const register = (userDetails, navigate) => {
+    return async (dispatch) => {
           const response = await api.register(userDetails);
           console.log(response);
           if (response.error) {
+            alert(response?.exception?.response?.data);
+            // dispatch(openAlertMessage(response?.exception?.response?.data))
 
           } else {
             const { userDetails } = response?.data;

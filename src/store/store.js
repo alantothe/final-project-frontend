@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 
 import authReducer from "./reducers/authReducers";
+import alertReducer from './reducers/alertReducer';
 
 import { combineReducers} from "redux";
 
@@ -10,6 +11,7 @@ import { combineReducers} from "redux";
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  alert: alertReducer,
 
 });
 

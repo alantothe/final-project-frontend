@@ -1,6 +1,6 @@
 import { authActions } from "../actions/authActions";
 
-const initState = {
+export const initState = {
   userDetails: null,
 };
 
