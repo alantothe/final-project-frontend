@@ -1,4 +1,5 @@
 import React from "react";
+import DropdownMenu from "./DropdownMenu";
 import { styled } from "@mui/system";
 
 
@@ -19,6 +20,7 @@ const MainContainer = styled("div")({
 const AppBar = () => {
   return (
     <MainContainer>
+    <DropdownMenu />
 
     </MainContainer>
   );
