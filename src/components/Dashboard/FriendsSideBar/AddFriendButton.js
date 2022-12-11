@@ -5,14 +5,17 @@ import { useState } from 'react';
 import AddFriendDialog from './AddFriendDialog';
 
 const additionalStyles = {
-    marginTop: "10px",
-    marginLeft: "5px",
-    marginRight: "5px",
-    width: "200px",
-    height: "40px",
-    background: "#3ba55d",
-    color: "white",
-  };
+  marginTop: "10px",
+  marginLeft: "5px",
+  marginRight: "5px",
+  width: "200px",
+  height: "40px",
+  background: "black",
+  color: "white",
+  fontWeight: "bold",
+  fontSize: "12px",
+};
+
 
 
 
@@ -32,7 +35,7 @@ const additionalStyles = {
       <>
         <CustomButton
           additionalStyles={additionalStyles}
-          label="Add Friend"
+          label="INVITE FRIEND"
           onClick={handleOpenAddFriendDialog}
         />
         <AddFriendDialog
