@@ -1,6 +1,8 @@
 
 import React from 'react';
 import CustomButton from '../../shared/SharedButton';
+import { useState } from 'react';
+import AddFriendDialog from './AddFriendDialog';
 
 const additionalStyles = {
     marginTop: "10px",
@@ -12,20 +14,33 @@ const additionalStyles = {
     color: "white",
   };
 
-  const handleOpenAddFriendDialog = () => {
 
+
+
+  const AddFriendButton = () => {
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+    const handleOpenAddFriendDialog = () => {
+      setIsDialogOpen(true);
+    };
+
+    const handleCloseAddFriendDialog = () => {
+      setIsDialogOpen(false);
+    };
+
+    return (
+      <>
+        <CustomButton
+          additionalStyles={additionalStyles}
+          label="Add Friend"
+          onClick={handleOpenAddFriendDialog}
+        />
+        <AddFriendDialog
+          isDialogOpen={isDialogOpen}
+          closeDialogHandler={handleCloseAddFriendDialog}
+        />
+      </>
+    );
   };
 
-const AddFriendButton = () => {
-    return (
-        <div>
-            <CustomButton
-                        additionalStyles={additionalStyles}
-                        label="Add Friend"
-                        onClick={handleOpenAddFriendDialog}
-            />
-        </div>
-    );
-};
-
-export default AddFriendButton;
+  export default AddFriendButton;
