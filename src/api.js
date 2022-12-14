@@ -1,64 +1,93 @@
-import { logout } from "./components/shared/utilities/logout";
-import axios from 'axios';
+import axios from "axios";
+import { logout } from "./shared/utilities/auth";
 
 const apiClient = axios.create({
-    baseURL: 'http://localhost:4000/api/',
-    timeout: 1000
-})
+  baseURL: "http://localhost:4000/api",
+  timeout: 1000,
+});
 
+apiClient.interceptors.request.use(
+  (config) => {
+    const userDetails = localStorage.getItem("user");
 
-// checks for JWT token
-apiClient.interceptors.request.use((config) => {
-    const userDetails = localStorage.getItem('user')
-    if (userDetails){
-        const token = JSON.parse(userDetails).token;
-        config.headers.Authorization = `Bearer ${token}`;
+    if (userDetails) {
+      const token = JSON.parse(userDetails).token;
+      config.headers.Authorization = `Bearer ${token}`;
     }
-    return config;
 
-},
-(err) => {
-    return Promise.reject(err)
-}
+    return config;
+  },
+  (err) => {
+    return Promise.reject(err);
+  }
 );
 
-//public routes
+// public routes
 
 export const login = async (data) => {
-    try{
-
-        return await apiClient.post("/auth/login", data)
-
-    }
-    catch (exception){
-        return {
-            error: true,
-            exception,
-        }
-    }
-}
-export const register = async (data) => {
-    try {
-        return await apiClient.post("/auth/register", data);
-    }
-        catch (exception) {
-            return {
-                error: true,
-                exception,
-            };
-        }
+  try {
+    return await apiClient.post("/auth/login", data);
+  } catch (exception) {
+    return {
+      error: true,
+      exception,
     };
+  }
+};
 
+export const register = async (data) => {
+  try {
+    return await apiClient.post("/auth/register", data);
+  } catch (exception) {
+    return {
+      error: true,
+      exception,
+    };
+  }
+};
 
-// sercure routes
+// secure routes
+export const sendFriendInvitation = async (data) => {
+
+  try {
+    return await apiClient.post("/friend-invitation/invite", data);
+  } catch (exception) {
+    checkResponseCode(exception);
+    return {
+      error: true,
+      exception,
+    };
+  }
+};
+
+export const acceptFriendInvitation = async (data) => {
+  try {
+    return await apiClient.post("/friend-invitation/accept", data);
+  } catch (exception) {
+    checkResponseCode(exception);
+    return {
+      error: true,
+      exception,
+    };
+  }
+};
+
+export const rejectFriendInvitation = async (data) => {
+  try {
+    return await apiClient.post("/friend-invitation/reject", data);
+  } catch (exception) {
+    checkResponseCode(exception);
+    return {
+      error: true,
+      exception,
+    };
+  }
+};
 
 const checkResponseCode = (exception) => {
-    const responseCode = exception?.response?.status;
+  const responseCode = exception?.response?.status;
 
-
-    if (responseCode) {
-      (responseCode === 401 || responseCode === 403) && logout();
-    }
-  };
-
-  console.log(checkResponseCode)
+  if (responseCode) {
+    (responseCode === 401 || responseCode === 403) && logout();
+  }
+};

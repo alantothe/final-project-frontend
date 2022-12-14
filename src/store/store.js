@@ -1,63 +1,34 @@
 import { configureStore } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
+import authReducer from './reducers/authReducer';
 
-import authReducer from "./reducers/authReducers";
-import alertReducer from './reducers/alertReducer';
-
-import { combineReducers} from "redux";
-
-
-
-
-const rootReducer = combineReducers({
-  auth: authReducer,
-  alert: alertReducer,
-
-});
+import friendsReducer from './reducers/friendsReducer';
 
 const store = configureStore({
-    reducer : {rootReducer},
-    middleware: [thunk]
-})
+  reducer: {
+    auth: authReducer,
 
-
-
-
+    friends: friendsReducer,
+  },
+  middleware: [thunk],
+});
 
 export default store;
 
 
 
-
-
-// import { configureStore, applyMiddleware } from '@reduxjs/toolkit';
-// import thunk from 'redux-thunk';
-// import rootReducer from './reducers';
-
-// const store = configureStore({
-//   reducer: rootReducer,
-//   middleware: [applyMiddleware(thunk)]
-// });
-
-
-
-
-
-
-
-//
-
 // import { composeWithDevTools } from "redux-devtools-extension";
-// import { combineReducers,  applyMiddleware } from "redux";
+// import { combineReducers, createStore, applyMiddleware } from "redux";
 // import thunk from "redux-thunk";
-// import { legacy_createStore as createStore} from 'redux'
 
-// import authReducer from "./reducers/authReducers";
-
+// import authReducer from "./reducers/authReducer";
+// import alertReducer from "./reducers/alertReducer";
+// import friendsReducer from "./reducers/friendsReducer";
 
 // const rootReducer = combineReducers({
 //   auth: authReducer,
-
+//
+//   friends: friendsReducer,
 // });
 
 // const store = createStore(
@@ -66,6 +37,32 @@ export default store;
 // );
 
 // export default store;
+
+
+// import { configureStore } from '@reduxjs/toolkit';
+// import thunk from 'redux-thunk';
+
+// import authReducer from "./reducers/authReducers";
+
+
+// import { combineReducers} from "redux";
+// import friendsReducer from './reducers/friendsReducer'
+
+
+
+
+// const rootReducer = combineReducers({
+//   auth: authReducer,
+//   friends: friendsReducer,
+
+
+// });
+
+// const store = configureStore({
+//     reducer : {rootReducer},
+//     middleware: [thunk]
+// })
+
 
 
 
