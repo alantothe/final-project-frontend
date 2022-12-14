@@ -3,12 +3,13 @@ import thunk from 'redux-thunk';
 import authReducer from './reducers/authReducer';
 
 import friendsReducer from './reducers/friendsReducer';
+import chatReducer from "./reducers/chatReducer";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
-
     friends: friendsReducer,
+    chat: chatReducer,
   },
   middleware: [thunk],
 });
